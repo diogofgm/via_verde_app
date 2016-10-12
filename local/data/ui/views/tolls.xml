@@ -1,0 +1,152 @@
+<form>
+  <label>Portagens</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="time" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>-1mon@mon</earliest>
+        <latest>@mon</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>index=via_verde  "Market Description"="Portagens"
+| rename "Entry Point" AS entry_point "Exit Point" AS exit_point
+| eval trip = entry_point + " - " + exit_point
+| stats dc(trip) AS trip</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="wrap">undefined</option>
+        <option name="rowNumbers">undefined</option>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="linkView">search</option>
+        <option name="underLabel">Distinct charges</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=via_verde  "Market Description"="Portagens"
+| stats count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="underLabel">Total number of charges</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=via_verde  "Market Description"="Portagens"
+| stats sum(Value)</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">before</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="underLabel">Total charges</option>
+        <option name="unit">€</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Last trips</title>
+      <table>
+        <search>
+          <query>index="via_verde" "Market Description"="Portagens" | rename "Entry Date" AS entry_date "Exit Date" AS exit_date | eval t1 = strptime(entry_date, "%Y-%m-%d %H:%M:%S") | eval t2 = strptime(exit_date, "%Y-%m-%d %H:%M:%S") | eval duration = round(t2 -t1,0) | table _time "Entry Point" "Exit Point" Value duration | sort - _time</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Top trips</title>
+      <table>
+        <search>
+          <query>index=via_verde  "Market Description"="Portagens"
+| rename "Entry Point" AS entry_point "Exit Point" AS exit_point
+| eval trip = entry_point + " - " + exit_point
+| stats count by trip
+| sort - count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">cell</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="timeline_app.timeline">
+        <search>
+          <query>index="via_verde" "Market Description"="Portagens" 
+| rename "Entry Date" AS entry_date "Exit Date" AS exit_date "Entry Point" AS entry "Exit Point" AS exit Value AS value | eval t1 = strptime(entry_date, "%Y-%m-%d %H:%M:%S") 
+| eval t2 = strptime(exit_date, "%Y-%m-%d %H:%M:%S") 
+| eval duration = (t2-t1)*1000 
+| table _time entry exit duration</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="timeline_app.timeline.useColors">1</option>
+        <option name="timeline_app.timeline.colorMode">categorical</option>
+        <option name="timeline_app.timeline.numOfBins">9</option>
+        <option name="timeline_app.timeline.maxColor">#DA5C5C</option>
+        <option name="timeline_app.timeline.minColor">#FFE8E8</option>
+        <option name="timeline_app.timeline.axisTimeFormat">DAYS</option>
+        <option name="timeline_app.timeline.tooltipTimeFormat">SECONDS</option>
+      </viz>
+    </panel>
+  </row>
+</form>
