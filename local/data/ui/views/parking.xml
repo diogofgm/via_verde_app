@@ -13,7 +13,7 @@
     <panel>
       <single>
         <search>
-          <query>index=via_verde "Market Description"="Parques" | stats dc("Entry Point")</query>
+          <query>index=via_verde service = "Parque*" | stats dc("entry_point")</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -37,7 +37,7 @@
     <panel>
       <single>
         <search>
-          <query>index=via_verde "Market Description"="Parques" | stats sum(Value)</query>
+          <query>index=via_verde service = "Parque*" | stats sum(value)</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -62,12 +62,7 @@
     <panel>
       <single>
         <search>
-          <query>index="via_verde" date_month="september" "Market Description"="Parques" 
-| rename "Entry Date" AS entry_date "Exit Date" AS exit_date 
-| eval t1 = strptime(entry_date, "%Y-%m-%d %H:%M:%S") 
-| eval t2 = strptime(exit_date, "%Y-%m-%d %H:%M:%S") 
-| eval duration = (t2 -t1)/60
-| stats avg(duration) AS duration</query>
+          <query>index="via_verde" service = "Parque*" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M")  | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  | eval duration = (t2 -t1)/60 | stats avg(duration) AS duration</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -95,18 +90,20 @@
       <table>
         <title>Last parking</title>
         <search>
-          <query>index="via_verde" date_month="september" "Market Description"="Parques" | rename "Entry Date" AS entry_date "Exit Date" AS exit_date | eval t1 = strptime(entry_date, "%Y-%m-%d %H:%M:%S") | eval t2 = strptime(exit_date, "%Y-%m-%d %H:%M:%S") | eval duration = (t2 -t1)/60 | stats values("Entry Point") AS park values(Value) AS value by duration 
-| eval value = round(value,2) 
-| eval duration = round(duration,2)
-| fields park duration value</query>
+          <query>index="via_verde"  service = "Parque*" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+| table t1 entry_point value duration
+| eval value = round(value,2)  
+| eval duration = tostring(round(duration,2),"duration") 
+| eval date = strftime(t1, "%Y-%m-%d %H:%M")
+| fields date entry_point duration value</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="wrap">true</option>
-        <option name="rowNumbers">false</option>
+        <option name="count">10</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
-        <option name="count">10</option>
+        <option name="rowNumbers">false</option>
+        <option name="wrap">true</option>
       </table>
     </panel>
   </row>
@@ -115,7 +112,7 @@
       <chart>
         <title>Charges per park</title>
         <search>
-          <query>index="via_verde"  "Market Description"="Parques" | stats sum(Value) AS Value by "Entry Point" | sort - Value</query>
+          <query>index="via_verde" service = "Parque*" | stats sum(value) AS value by entry_point | sort - value</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -145,22 +142,6 @@
         <option name="charting.axisTitleX.text">Park</option>
         <option name="charting.axisTitleY.text">Charge (€)</option>
       </chart>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <table>
-        <title>Last parking</title>
-        <search>
-          <query>index="via_verde" date_month="september" "Market Description"="Parques" | rename "Entry Date" AS entry_date "Exit Date" AS exit_date | eval t1 = strptime(entry_date, "%Y-%m-%d %H:%M:%S") | eval t2 = strptime(exit_date, "%Y-%m-%d %H:%M:%S") | eval duration = t2 -t1 | stats values("Entry Point") AS park values(Value) AS value by duration | sort - value | fields park duration value</query>
-          <earliest>0</earliest>
-        </search>
-        <option name="wrap">true</option>
-        <option name="rowNumbers">false</option>
-        <option name="dataOverlayMode">none</option>
-        <option name="drilldown">cell</option>
-        <option name="count">10</option>
-      </table>
     </panel>
   </row>
 </form>

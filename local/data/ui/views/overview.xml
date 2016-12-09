@@ -13,7 +13,7 @@
     <panel>
       <single>
         <search>
-          <query>index="via_verde" | stats sum(Value) AS value</query>
+          <query>index="via_verde" | stats sum(value) AS value</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -58,12 +58,36 @@
         <option name="underLabel">Total charges</option>
       </single>
     </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=via_verde | stats count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="underLabel">Times used</option>
+      </single>
+    </panel>
   </row>
   <row>
     <panel>
       <chart>
         <search>
-          <query>index="via_verde" | stats sum(value) AS value by "Market Description"</query>
+          <query>index="via_verde" | stats sum(value) AS value by service</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -96,7 +120,7 @@
       <title>Charges by market</title>
       <chart>
         <search>
-          <query>index="via_verde" | timechart span=1d sum(Value) AS valor by "Market Description"</query>
+          <query>index="via_verde" | timechart span=1d sum(value) AS valor by service</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -124,6 +148,26 @@
         <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
         <option name="charting.legend.placement">right</option>
       </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="calendar_heatmap_app.calendar_heatmap">
+        <search>
+          <query>index="via_verde" | timechart span=1d count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellPadding">2</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellSize">15</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellStyle">square</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.legendType">uniform</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.maxColor">#65a637</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.minColor">#ccc</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.numOfBins">4</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.showLegend">true</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.splitMonths">true</option>
+      </viz>
     </panel>
   </row>
 </form>
