@@ -4,8 +4,8 @@
     <input type="time" token="time" searchWhenChanged="true">
       <label></label>
       <default>
-        <earliest>-1mon@mon</earliest>
-        <latest>@mon</latest>
+        <earliest>-1y@y</earliest>
+        <latest>@y</latest>
       </default>
     </input>
   </fieldset>
@@ -13,7 +13,7 @@
     <panel>
       <single>
         <search>
-          <query>index=via_verde service = "Parque*" | stats dc("entry_point")</query>
+          <query>index=via_verde service = "Parque*" | dedup _time | stats dc("entry_point")</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -37,7 +37,7 @@
     <panel>
       <single>
         <search>
-          <query>index=via_verde service = "Parque*" | stats sum(value)</query>
+          <query>index=via_verde service = "Parque*" | dedup _time | stats sum(value)</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -62,7 +62,7 @@
     <panel>
       <single>
         <search>
-          <query>index="via_verde" service = "Parque*" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M")  | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  | eval duration = (t2 -t1)/60 | stats avg(duration) AS duration</query>
+          <query>index="via_verde" service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M")  | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  | eval duration = (t2 -t1)/60 | stats avg(duration) AS duration</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -90,7 +90,7 @@
       <table>
         <title>Last parking</title>
         <search>
-          <query>index="via_verde"  service = "Parque*" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+          <query>index="via_verde"  service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
 | table t1 entry_point value duration
 | eval value = round(value,2)  
 | eval duration = tostring(round(duration,2),"duration") 
@@ -104,6 +104,38 @@
         <option name="drilldown">cell</option>
         <option name="rowNumbers">false</option>
         <option name="wrap">true</option>
+        <format type="number" field="value">
+          <option name="unit">€</option>
+          <option name="unitPosition">before</option>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Top parking</title>
+        <search>
+          <query>index="via_verde"  service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+| table t1 entry_point value duration
+| eval value = round(value,2)  
+
+| eval date = strftime(t1, "%Y-%m-%d %H:%M")
+| fields date entry_point duration value
+| stats sum(value) AS value by entry_point | sort - value</query>
+          <earliest>-1y@y</earliest>
+          <latest>@y</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="number" field="value">
+          <option name="unit">€</option>
+          <option name="unitPosition">before</option>
+        </format>
       </table>
     </panel>
   </row>
@@ -112,7 +144,7 @@
       <chart>
         <title>Charges per park</title>
         <search>
-          <query>index="via_verde" service = "Parque*" | stats sum(value) AS value by entry_point | sort - value</query>
+          <query>index="via_verde" service = "Parque*" | dedup _time | stats sum(value) AS value by entry_point | sort - value</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
