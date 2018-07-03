@@ -13,79 +13,80 @@
     <panel>
       <single>
         <search>
-          <query>index=via_verde  service = "Portagens" | dedup _time
+          <query>`via_verde_index`  service = "Portagens" | dedup _time
 | eval trip = entry_point + " - " + exit_point | stats dc(trip) AS trip</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="wrap">undefined</option>
-        <option name="rowNumbers">undefined</option>
-        <option name="drilldown">none</option>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Distinct charges</option>
         <option name="unitPosition">after</option>
         <option name="useColors">0</option>
         <option name="useThousandSeparators">1</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
-        <option name="linkView">search</option>
-        <option name="underLabel">Distinct charges</option>
       </single>
     </panel>
     <panel>
       <single>
         <search>
-          <query>index=via_verde  service = "Portagens" | dedup _time
+          <query>`via_verde_index`  service = "Portagens" | dedup _time
 | stats count</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="drilldown">none</option>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Total number of charges</option>
         <option name="unitPosition">after</option>
         <option name="useColors">0</option>
         <option name="useThousandSeparators">1</option>
-        <option name="linkView">search</option>
-        <option name="underLabel">Total number of charges</option>
       </single>
     </panel>
     <panel>
       <single>
         <search>
-          <query>index=via_verde  service = "Portagens" | dedup _time
+          <query>`via_verde_index`  service = "Portagens" | dedup _time
 | stats sum(value)</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="drilldown">none</option>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0.00</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Total charges</option>
+        <option name="unit">€</option>
         <option name="unitPosition">before</option>
         <option name="useColors">0</option>
         <option name="useThousandSeparators">1</option>
-        <option name="linkView">search</option>
-        <option name="underLabel">Total charges</option>
-        <option name="unit">€</option>
       </single>
     </panel>
   </row>
@@ -94,7 +95,7 @@
       <title>Last trips</title>
       <table>
         <search>
-          <query>index="via_verde" service = "Portagens" 
+          <query>`via_verde_index` service = "Portagens" 
 | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M")  
 | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  
 | eval duration = tostring(round(t2 -t1,0), "duration")
@@ -106,6 +107,7 @@
         <option name="count">10</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="wrap">true</option>
       </table>
@@ -114,7 +116,7 @@
       <title>Top trips</title>
       <table>
         <search>
-          <query>index=via_verde service = "Portagens" | dedup _time
+          <query>`via_verde_index` service = "Portagens" | dedup _time
 | eval trip = entry_point + " - " + exit_point | stats count by trip 
 | sort - count</query>
           <earliest>$time.earliest$</earliest>
@@ -123,6 +125,7 @@
         <option name="count">10</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="wrap">true</option>
       </table>
@@ -132,7 +135,7 @@
     <panel>
       <viz type="timeline_app.timeline">
         <search>
-          <query>index="via_verde" service = "Portagens" |dedup _time
+          <query>`via_verde_index` service = "Portagens" |dedup _time
 | eval t1 = round(strptime(entry_date, "%d-%m-%Y;%H:%M"),0)
 | eval t2 = round(strptime(exit_date, "%d-%m-%Y;%H:%M"),0)
 | eval duration = (t2-t1)*1000 
@@ -140,6 +143,7 @@
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
+        <option name="refresh.display">progressbar</option>
         <option name="timeline_app.timeline.axisTimeFormat">DAYS</option>
         <option name="timeline_app.timeline.colorMode">categorical</option>
         <option name="timeline_app.timeline.maxColor">#DA5C5C</option>

@@ -13,75 +13,78 @@
     <panel>
       <single>
         <search>
-          <query>index=via_verde service = "Parque*" | dedup _time | stats dc("entry_point")</query>
+          <query>`via_verde_index` service = "Parque*" | dedup _time | stats dc("entry_point")</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="drilldown">none</option>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Number of visited parks</option>
         <option name="unitPosition">after</option>
         <option name="useColors">0</option>
         <option name="useThousandSeparators">0</option>
-        <option name="linkView">search</option>
-        <option name="underLabel">Number of visited parks</option>
       </single>
     </panel>
     <panel>
       <single>
         <search>
-          <query>index=via_verde service = "Parque*" | dedup _time | stats sum(value)</query>
+          <query>`via_verde_index` service = "Parque*" | dedup _time | stats sum(value)</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="drilldown">none</option>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Total charges</option>
+        <option name="unit">€</option>
         <option name="unitPosition">before</option>
         <option name="useColors">0</option>
         <option name="useThousandSeparators">1</option>
-        <option name="linkView">search</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
-        <option name="unit">€</option>
-        <option name="underLabel">Total charges</option>
       </single>
     </panel>
     <panel>
       <single>
         <search>
-          <query>index="via_verde" service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M")  | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  | eval duration = (t2 -t1)/60 | stats avg(duration) AS duration</query>
+          <query>`via_verde_index` service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M")  | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  | eval duration = (t2 -t1)/60 | stats avg(duration) AS duration</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="drilldown">none</option>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Average parked time</option>
+        <option name="unit">min</option>
         <option name="unitPosition">after</option>
         <option name="useColors">0</option>
         <option name="useThousandSeparators">1</option>
-        <option name="linkView">search</option>
-        <option name="underLabel">Average parked time</option>
-        <option name="unit">min</option>
       </single>
     </panel>
   </row>
@@ -90,7 +93,7 @@
       <table>
         <title>Last parking</title>
         <search>
-          <query>index="via_verde"  service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+          <query>`via_verde_index`  service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
 | table t1 entry_point value duration
 | eval value = round(value,2)  
 | eval duration = tostring(round(duration,2),"duration") 
@@ -102,6 +105,7 @@
         <option name="count">10</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="wrap">true</option>
         <format type="number" field="value">
@@ -114,7 +118,7 @@
       <table>
         <title>Top parking</title>
         <search>
-          <query>index="via_verde"  service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+          <query>`via_verde_index`  service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
 | table t1 entry_point value duration
 | eval value = round(value,2)  
 
@@ -129,6 +133,7 @@
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
@@ -144,13 +149,15 @@
       <chart>
         <title>Charges per park</title>
         <search>
-          <query>index="via_verde" service = "Parque*" | dedup _time | stats sum(value) AS value by entry_point | sort - value</query>
+          <query>`via_verde_index` service = "Parque*" | dedup _time | stats sum(value) AS value by entry_point | sort - value</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
         <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
         <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.text">Park</option>
         <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.text">Charge (€)</option>
         <option name="charting.axisTitleY.visibility">visible</option>
         <option name="charting.axisTitleY2.visibility">visible</option>
         <option name="charting.axisX.scale">linear</option>
@@ -171,8 +178,7 @@
         <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
         <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
         <option name="charting.legend.placement">right</option>
-        <option name="charting.axisTitleX.text">Park</option>
-        <option name="charting.axisTitleY.text">Charge (€)</option>
+        <option name="refresh.display">progressbar</option>
       </chart>
     </panel>
   </row>

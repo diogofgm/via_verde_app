@@ -1,0 +1,52 @@
+<dashboard>
+  <label>TODO SEARCHES AND LOOKUPS</label>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>`via_verde_index` service = "Portagens"
+| eval trip = entry_point + " - " + exit_point 
+| stats first(value) as value values(entry_point) values(exit_point) by trip | rename values(*) AS *
+| fields entry_point exit_point value
+| outputlookup via_verde_trip_prices.csv</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">100</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>`via_verde_index` service = "Portagens"
+| stats c by entry_point
+| eval latitude = "", longitude = "" | fields - c
+| rename entry_point AS location
+| append [search `via_verde_index` service = "Portagens"
+| stats c by exit_point
+| eval latitude = "", longitude = "" | fields - c
+| rename exit_point AS location]
+| dedup location
+| outputlookup via_verde_tolls_location.csv</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">100</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
