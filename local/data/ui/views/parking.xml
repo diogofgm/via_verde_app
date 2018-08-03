@@ -29,7 +29,7 @@
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="underLabel">Number of visited parks</option>
+        <option name="underLabel">Distinct parkings visited</option>
         <option name="unitPosition">after</option>
         <option name="useColors">0</option>
         <option name="useThousandSeparators">0</option>
@@ -54,7 +54,7 @@
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="underLabel">Total charges</option>
+        <option name="underLabel">Total charged</option>
         <option name="unit">€</option>
         <option name="unitPosition">before</option>
         <option name="useColors">0</option>
@@ -90,15 +90,16 @@
   </row>
   <row>
     <panel>
+      <title>Last parking</title>
       <table>
-        <title>Last parking</title>
         <search>
           <query>`via_verde_index`  service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
 | table t1 entry_point value duration
 | eval value = round(value,2)  
 | eval duration = tostring(round(duration,2),"duration") 
 | eval date = strftime(t1, "%Y-%m-%d %H:%M")
-| fields date entry_point duration value</query>
+| fields date entry_point duration value
+| rename date AS Date entry_point AS "Parking" duration AS Duration value AS Value</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -112,11 +113,15 @@
           <option name="unit">€</option>
           <option name="unitPosition">before</option>
         </format>
+        <format type="number" field="Value">
+          <option name="unit">€</option>
+          <option name="unitPosition">before</option>
+        </format>
       </table>
     </panel>
     <panel>
+      <title>Top parking</title>
       <table>
-        <title>Top parking</title>
         <search>
           <query>`via_verde_index`  service = "Parque*" | dedup _time | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
 | table t1 entry_point value duration
@@ -124,9 +129,10 @@
 
 | eval date = strftime(t1, "%Y-%m-%d %H:%M")
 | fields date entry_point duration value
-| stats sum(value) AS value by entry_point | sort - value</query>
-          <earliest>-1y@y</earliest>
-          <latest>@y</latest>
+| stats sum(value) AS value by entry_point | sort - value
+| rename entry_point AS parking value AS Value</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
           <sampleRatio>1</sampleRatio>
         </search>
         <option name="count">20</option>
@@ -138,6 +144,10 @@
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
         <format type="number" field="value">
+          <option name="unit">€</option>
+          <option name="unitPosition">before</option>
+        </format>
+        <format type="number" field="Value">
           <option name="unit">€</option>
           <option name="unitPosition">before</option>
         </format>

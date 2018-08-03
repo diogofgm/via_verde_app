@@ -13,7 +13,8 @@
     <panel>
       <single>
         <search>
-          <query>`via_verde_index` |dedup _time| stats sum(value) AS value</query>
+          <query>`via_verde_index`
+| stats sum(value) AS value</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -23,12 +24,12 @@
         <option name="numberPrecision">0.00</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
-        <option name="refresh.display">progressbar</option>
+        <option name="refresh.display">none</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="underLabel">Total charges</option>
+        <option name="underLabel">Total charged</option>
         <option name="unit">€</option>
         <option name="unitPosition">before</option>
         <option name="useColors">0</option>
@@ -38,7 +39,8 @@
     <panel>
       <single>
         <search>
-          <query>`via_verde_index` | dedup _time | stats count</query>
+          <query>`via_verde_index` 
+| stats count</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -49,7 +51,7 @@
         <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
-        <option name="refresh.display">progressbar</option>
+        <option name="refresh.display">none</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
@@ -63,6 +65,7 @@
   </row>
   <row>
     <panel>
+      <title>Charges by service</title>
       <chart>
         <search>
           <query>`via_verde_index` | dedup _time | stats sum(value) AS value by service</query>
@@ -92,14 +95,15 @@
         <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
         <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
         <option name="charting.legend.placement">right</option>
-        <option name="refresh.display">progressbar</option>
+        <option name="refresh.display">none</option>
       </chart>
     </panel>
     <panel>
-      <title>Charges by market</title>
+      <title>Charges by service over time</title>
       <chart>
         <search>
-          <query>`via_verde_index` | dedup _time | timechart span=1d sum(value) AS valor by service</query>
+          <query>`via_verde_index`
+| timechart sum(value) AS valor by service</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -126,29 +130,8 @@
         <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
         <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
         <option name="charting.legend.placement">right</option>
-        <option name="refresh.display">progressbar</option>
+        <option name="refresh.display">preview</option>
       </chart>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <viz type="calendar_heatmap_app.calendar_heatmap">
-        <search>
-          <query>`via_verde_index` |dedup _time | timechart span=1d count</query>
-          <earliest>$time.earliest$</earliest>
-          <latest>$time.latest$</latest>
-        </search>
-        <option name="calendar_heatmap_app.calendar_heatmap.cellPadding">2</option>
-        <option name="calendar_heatmap_app.calendar_heatmap.cellSize">15</option>
-        <option name="calendar_heatmap_app.calendar_heatmap.cellStyle">square</option>
-        <option name="calendar_heatmap_app.calendar_heatmap.legendType">uniform</option>
-        <option name="calendar_heatmap_app.calendar_heatmap.maxColor">#65a637</option>
-        <option name="calendar_heatmap_app.calendar_heatmap.minColor">#ccc</option>
-        <option name="calendar_heatmap_app.calendar_heatmap.numOfBins">4</option>
-        <option name="calendar_heatmap_app.calendar_heatmap.showLegend">true</option>
-        <option name="calendar_heatmap_app.calendar_heatmap.splitMonths">true</option>
-        <option name="refresh.display">progressbar</option>
-      </viz>
     </panel>
   </row>
 </form>

@@ -82,7 +82,7 @@
         <option name="showTrendIndicator">1</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="underLabel">Total charges</option>
+        <option name="underLabel">Total charged</option>
         <option name="unit">€</option>
         <option name="unitPosition">before</option>
         <option name="useColors">0</option>
@@ -100,7 +100,9 @@
 | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  
 | eval duration = tostring(round(t2 -t1,0), "duration")
 | fieldformat value="€".tostring(value, "commas")
-| table _time entry_point exit_point value duration  | sort - _time | dedup _time</query>
+| table _time entry_point exit_point value duration  | sort - _time | dedup _time
+| rename _time AS Timestamp entry_point AS "Entry Point" exit_point AS "Exit Point" value AS Value duration AS Duration
+| convert ctime(Timestamp)</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -118,7 +120,8 @@
         <search>
           <query>`via_verde_index` service = "Portagens" | dedup _time
 | eval trip = entry_point + " - " + exit_point | stats count by trip 
-| sort - count</query>
+| sort - count
+| rename trip AS "Trip (Entry - Exit)" count AS Count</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
