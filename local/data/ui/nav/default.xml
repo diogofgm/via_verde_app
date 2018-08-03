@@ -1,6 +1,18 @@
 <nav search_view="search" color="#1BB04B">
   <view name="overview" default='true' />
-  <view name="tolls" />
-  <view name="parking" />
-  <view name="dashboards" />
+  <collection label="Tolls">
+    <view name="tolls" />
+  </collection>
+  <collection label="Parking">
+    <view name="parking" />
+  </collection>
+  <collection label="Purchase">
+    <view name="purchases" />
+  </collection>
+  <collection label="Configurations">
+    <view name="" />
+  </collection>
+  <collection label="Help">
+    <view match="via_verde_help"/>
+  </collection>
 </nav>
