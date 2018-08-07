@@ -1,3 +1,59 @@
-<dashboard>
-  <label>via_verde_purchases_overview</label>
-</dashboard>
+<form>
+  <label>Purchases</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="time">
+      <label>Time Range</label>
+      <default>
+        <earliest>@y</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index` service="Transacção Via Verde" 
+| stats count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">none</option>
+        <option name="underLabel">Total number of purchases</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index` service="Transacção Via Verde" 
+| stats dc(provider)</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">none</option>
+        <option name="underLabel">Distinct vendors</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index` service="Transacção Via Verde" 
+| stats sum(value) AS value</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">none</option>
+        <option name="underLabel">Total charged</option>
+        <option name="unit">€</option>
+        <option name="unitPosition">before</option>
+      </single>
+    </panel>
+  </row>
+</form>
