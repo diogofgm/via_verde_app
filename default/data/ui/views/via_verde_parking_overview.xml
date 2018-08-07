@@ -1,0 +1,154 @@
+<form>
+  <label>Parking Overview</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="time" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>@y</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index` service = "Parques de Estacionamento" OR service = "Estacionamento de Rua" | stats dc("entry_point")</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">none</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Distinct parkings visited</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">0</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index` service = "Parques de Estacionamento" OR service = "Estacionamento de Rua" | stats sum(value)</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">none</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Total charged</option>
+        <option name="unit">€</option>
+        <option name="unitPosition">before</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index` service = "Parques de Estacionamento" OR service = "Estacionamento de Rua" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M")  | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  | eval duration = (t2 -t1)/60 | stats avg(duration) AS duration</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">none</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Average parked time</option>
+        <option name="unit">min</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Last parking</title>
+      <table>
+        <search>
+          <query>`via_verde_index` service = "Parques de Estacionamento" OR service = "Estacionamento de Rua" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+| table t1 entry_point value duration
+| eval value = round(value,2)  
+| eval duration = tostring(round(duration,2),"duration") 
+| eval date = strftime(t1, "%Y-%m-%d %H:%M")
+| fields date entry_point duration value
+| rename date AS Date entry_point AS "Parking" duration AS Duration value AS Value</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="wrap">true</option>
+        <format type="number" field="value">
+          <option name="unit">€</option>
+          <option name="unitPosition">before</option>
+        </format>
+        <format type="number" field="Value">
+          <option name="unit">€</option>
+          <option name="unitPosition">before</option>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <title>Top parking</title>
+      <table>
+        <search>
+          <query>`via_verde_index` service = "Parques de Estacionamento" OR service = "Estacionamento de Rua" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+| table t1 entry_point value duration
+| eval value = round(value,2)  
+
+| eval date = strftime(t1, "%Y-%m-%d %H:%M")
+| fields date entry_point duration value
+| stats sum(value) AS value by entry_point | sort - value
+| rename entry_point AS parking value AS Value</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">none</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="number" field="value">
+          <option name="unit">€</option>
+          <option name="unitPosition">before</option>
+        </format>
+        <format type="number" field="Value">
+          <option name="unit">€</option>
+          <option name="unitPosition">before</option>
+        </format>
+      </table>
+    </panel>
+  </row>
+</form>
