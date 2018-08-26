@@ -9,6 +9,9 @@
   <collection label="Purchase">
     <view source="all" match="via_verde_purchases"/>
   </collection>
+  <collection label="Identifiers">
+    <view source="all" match="via_verde_identifiers"/>
+  </collection>
   <collection label="Configurations">
     <view source="all" match="via_verde_configurations"/>
   </collection>
