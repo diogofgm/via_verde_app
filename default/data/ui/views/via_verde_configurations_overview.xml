@@ -1,0 +1,52 @@
+<dashboard>
+  <init>
+    <set token="tk_show_inputs">true</set>
+  </init>
+  <label>Configurations Overview</label>
+  <row>
+    <panel>
+      <title>Inputs</title>
+      <table depends="tk_show_inputs">
+        <search>
+          <query>| rest /services/data/inputs/all 
+| search sourcetype=via_verde*
+| rename title AS Location eai:acl.app AS App eai:type AS "Input Type" host AS Host index AS Index sourcetype AS Sourcetype
+| fields "Input Type" Location App Index Sourcetype</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <done>
+            <condition>
+              <unset token="tk_show_inputs"></unset>
+            </condition>
+          </done>
+        </search>
+        <option name="count">100</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+      <html rejects="tk_show_inputs">
+        <p>No inputs configured.</p>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Lookups</title>
+      <table>
+        <search>
+          <query>| inputlookup vai_verde_tools 
+| stats count</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">10</option>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
