@@ -102,7 +102,7 @@
         </search>
         <option name="count">10</option>
         <option name="dataOverlayMode">none</option>
-        <option name="drilldown">cell</option>
+        <option name="drilldown">none</option>
         <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="wrap">true</option>
@@ -117,33 +117,57 @@
       </table>
     </panel>
     <panel>
-      <title>Top parking</title>
+      <title>Most Used Parks</title>
       <table>
         <search>
-          <query>`via_verde_index` service = "Parques de Estacionamento" OR service = "Estacionamento de Rua" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+          <query>`via_verde_index` service = "Parques de Estacionamento" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
 | table t1 entry_point value duration
 | eval value = round(value,2)  
-
 | eval date = strftime(t1, "%Y-%m-%d %H:%M")
 | fields date entry_point duration value
-| stats sum(value) AS value by entry_point | sort - value
-| rename entry_point AS parking value AS Value</query>
+| stats count AS Count sum(value) AS Value by entry_point | sort - Count
+| rename entry_point AS Park</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
           <sampleRatio>1</sampleRatio>
         </search>
         <option name="count">10</option>
         <option name="dataOverlayMode">none</option>
-        <option name="drilldown">cell</option>
+        <option name="drilldown">none</option>
         <option name="percentagesRow">false</option>
         <option name="refresh.display">none</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
-        <format type="number" field="value">
+        <format type="number" field="Value">
           <option name="unit">€</option>
           <option name="unitPosition">before</option>
         </format>
+      </table>
+    </panel>
+    <panel>
+      <title>Most Used Street Parking Locations</title>
+      <table>
+        <search>
+          <query>`via_verde_index` service = "Estacionamento de Rua" | eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M") | eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M") | eval duration = (t2 -t1) 
+| table t1 entry_point value duration
+| eval value = round(value,2)  
+| eval date = strftime(t1, "%Y-%m-%d %H:%M")
+| fields date entry_point duration value
+| stats count AS Count sum(value) AS Value by entry_point | sort - Count
+| rename entry_point AS Park</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">none</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
         <format type="number" field="Value">
           <option name="unit">€</option>
           <option name="unitPosition">before</option>
