@@ -134,27 +134,4 @@
       </table>
     </panel>
   </row>
-  <row>
-    <panel>
-      <viz type="timeline_app.timeline">
-        <search>
-          <query>`via_verde_index` service = "Portagens" |dedup _time
-| eval t1 = round(strptime(entry_date, "%d-%m-%Y;%H:%M"),0)
-| eval t2 = round(strptime(exit_date, "%d-%m-%Y;%H:%M"),0)
-| eval duration = (t2-t1)*1000 
-| table t1 license_plate entry_point duration</query>
-          <earliest>$time.earliest$</earliest>
-          <latest>$time.latest$</latest>
-        </search>
-        <option name="refresh.display">progressbar</option>
-        <option name="timeline_app.timeline.axisTimeFormat">DAYS</option>
-        <option name="timeline_app.timeline.colorMode">categorical</option>
-        <option name="timeline_app.timeline.maxColor">#DA5C5C</option>
-        <option name="timeline_app.timeline.minColor">#FFE8E8</option>
-        <option name="timeline_app.timeline.numOfBins">9</option>
-        <option name="timeline_app.timeline.tooltipTimeFormat">SECONDS</option>
-        <option name="timeline_app.timeline.useColors">1</option>
-      </viz>
-    </panel>
-  </row>
 </form>
