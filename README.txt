@@ -9,7 +9,7 @@ Install App in the Search heads
 ##Using GUI
 Create a new index to hold Via Verde (e.g viaverde) data or choose an existing one
 Upload the file or configure a new monitor input
-Select pinsafe as sourcetype
+Select via_verde as sourcetype
 Select your destination index
 
 #Configuring Via Verde App
