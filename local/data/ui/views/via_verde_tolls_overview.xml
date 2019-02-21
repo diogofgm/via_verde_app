@@ -1,0 +1,137 @@
+<form>
+  <label>Tolls Overview</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="time" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>0</earliest>
+        <latest></latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index`  service = "Portagens" | dedup _time
+| stats count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Total number of charges</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index`  service = "Portagens" | dedup _time
+| eval trip = entry_point + " - " + exit_point | stats dc(trip) AS trip</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Distinct charges</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>`via_verde_index`  service = "Portagens" | dedup _time
+| stats sum(value)</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Total charged</option>
+        <option name="unit">€</option>
+        <option name="unitPosition">before</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Last trips</title>
+      <table>
+        <search>
+          <query>`via_verde_index` service = "Portagens" 
+| eval t1 = strptime(entry_date, "%d-%m-%Y;%H:%M")  
+| eval t2 = strptime(exit_date, "%d-%m-%Y;%H:%M")  
+| eval duration = tostring(round(t2 -t1,0), "duration")
+| fieldformat value="€".tostring(value, "commas")
+| table _time entry_point exit_point value duration  | sort - _time | dedup _time
+| rename _time AS Timestamp entry_point AS "Entry Point" exit_point AS "Exit Point" value AS Value duration AS Duration
+| convert ctime(Timestamp)</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Top trips</title>
+      <table>
+        <search>
+          <query>`via_verde_index` service = "Portagens" | dedup _time
+| eval trip = entry_point + " - " + exit_point | stats count by trip 
+| sort - count
+| rename trip AS "Trip (Entry - Exit)" count AS Count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</form>

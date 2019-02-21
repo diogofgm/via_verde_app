@@ -1,0 +1,14 @@
+<setup>
+    <block title="Via Verde index" endpoint="admin/macros" entity="via_verde_index">
+        <text>
+            &lt;i&gt;Specify the index with your Via Verde data.&lt;/i&gt;
+        </text>
+
+        <!-- The field "is_scheduled" maps to the enableSched setting in savedsearches.conf -->
+        <input field="definition">
+            <label>Index name</label>
+            <type>index=via_verde</type>
+        </input>
+        
+    </block>
+</setup>

@@ -1,0 +1,21 @@
+<dashboard>
+  <label>Parking Locations</label>
+  <row>
+    <panel>
+      <map>
+        <search>
+          <query>`via_verde_index`</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">567</option>
+        <option name="mapping.map.center">(40.04,-8.23)</option>
+        <option name="mapping.map.zoom">6</option>
+        <option name="mapping.showTiles">1</option>
+        <option name="mapping.type">marker</option>
+        <option name="refresh.display">progressbar</option>
+      </map>
+    </panel>
+  </row>
+</dashboard>
