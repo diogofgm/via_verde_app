@@ -1,12 +1,27 @@
+# Translations template for PROJECT.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
 msgid ""
 msgstr ""
+"Project-Id-Version: Via Verde App for Splunk v1.1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-02-21 13:54+0000\n"
+"PO-Revision-Date: 2019-02-21 14:20+0000\n"
+"Last-Translator: Diogo Silva <diogo.silva@devbusters.com>\n"
+"Language-Team: diogo.silva@devbusters.com\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: POEditor.com\n"
-"Project-Id-Version: Via Verde App for Splunk\n"
-"Language: pt\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 0.9.4\n"
+"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-KeywordsList: label;title\n"
+"X-Poedit-SearchPath-0: default/data/ui/views\n"
+"X-Poedit-SearchPath-1: local/data/ui/views\n"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/app.conf:10
 msgid "Via Verde"
@@ -42,18 +57,12 @@ msgid "Purchase"
 msgstr "Compras"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
-#, fuzzy
-msgid "Identifier"
-msgid_plural "Identifiers"
-msgstr[0] "Identificador"
-msgstr[1] "Identificadores"
+msgid "Identifiers"
+msgstr "Identificadores"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
-#, fuzzy
-msgid "Configuration"
-msgid_plural "Configurations"
-msgstr[0] "Configuração"
-msgstr[1] "Configurações"
+msgid "Configurations"
+msgstr "Configurações"
 
 #. label
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
@@ -68,11 +77,8 @@ msgstr "via_verde_analytics_overview"
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_configurations_overview.xml:8
-#, fuzzy
-msgid "Input"
-msgid_plural "Inputs"
-msgstr[0] "Fonte de dados"
-msgstr[1] "Fontes de dados"
+msgid "Inputs"
+msgstr "Fontes de dados"
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_configurations_overview.xml:39
@@ -232,4 +238,3 @@ msgstr "Portagens - Pesquisa"
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/parking_locations.xml:2
 msgid "Parking Locations"
 msgstr "Estacionamentos"
-
