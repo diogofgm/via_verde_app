@@ -1,60 +1,85 @@
 # Translations template for PROJECT.
 # Copyright (C) 2019 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# Diogo Silva <diogo.silva@Adevbusters.com>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Via Verde App for Splunk v1.1.0\n"
-"Report-Msgid-Bugs-To: diogo.silva@Adevbusters.com\n"
-"POT-Creation-Date: 2019-02-21 13:54+0000\n"
-"PO-Revision-Date: 2019-02-21 15:58+0000\n"
-"Last-Translator: Diogo Silva <diogo.silva@devbusters.com>\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-02-21 18:45+0000\n"
+"PO-Revision-Date: 2019-02-21 18:51+0000\n"
 "Language-Team: diogo.silva@devbusters.com\n"
-"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.4\n"
 "X-Generator: Poedit 2.2.1\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-Basepath: ../../..\n"
-"X-Poedit-KeywordsList: label;title\n"
-"X-Poedit-SearchPath-0: default/data/ui/views\n"
-"X-Poedit-SearchPath-1: local/data/ui/views\n"
+"Last-Translator: Diogo Silva <diogo.silva@devbusters.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_ES\n"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/app.conf:10
 msgid "Via Verde"
-msgstr "Via Verde"
+msgstr ""
 
 #: /opt/splunk/etc/apps/via_verde_app/default/app.conf:14
 msgid "Via Verde App for Splunk"
-msgstr "Via Verde App para Splunk"
+msgstr ""
 
 #: /opt/splunk/etc/apps/via_verde_app/default/props.conf:4
 #: /opt/splunk/etc/apps/via_verde_app/default/props.conf:30
 msgid "Structured"
-msgstr "Estruturado"
+msgstr "Estructurado"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/props.conf:5
 msgid "Via verde sourcetype for the files sent by email."
-msgstr "Formato de dados dos ficheiros enviados por email pela Via Verde."
+msgstr ""
 
 #: /opt/splunk/etc/apps/via_verde_app/default/props.conf:31
 msgid "Via verde sourcetype for the files downloaded."
-msgstr "Formato de dados dos ficheiros descarregados do site da Via Verde."
+msgstr ""
+
+#: /opt/splunk/etc/apps/via_verde_app/default/ui-tour.conf:3
+msgid "via_verde_tour"
+msgstr ""
+
+#: /opt/splunk/etc/apps/via_verde_app/default/ui-tour.conf:11
+msgid "via_verde_welcome_tour"
+msgstr ""
+
+#. label
+#: /opt/splunk/etc/apps/via_verde_app/default/ui-tour.conf:14
+#: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_overview.xml:2
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:2
+msgid "Overview"
+msgstr "Visión general"
+
+#. label
+#: /opt/splunk/etc/apps/via_verde_app/default/ui-tour.conf:17
+#: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_overview.xml:2
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_overview.xml:2
+msgid "Tolls Overview"
+msgstr ""
+
+#. label
+#: /opt/splunk/etc/apps/via_verde_app/default/ui-tour.conf:19
+#: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_parking_overview.xml:2
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:2
+msgid "Parking Overview"
+msgstr ""
 
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
 msgid "Tolls"
-msgstr "Portagens"
+msgstr "Peajes"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
 msgid "Parking"
-msgstr "Estacionamento"
+msgstr "Estacionamiento"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
 msgid "Purchase"
-msgstr "Compras"
+msgstr "Compra"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
 msgid "Identifiers"
@@ -62,63 +87,67 @@ msgstr "Identificadores"
 
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
 msgid "Configurations"
-msgstr "Configurações"
+msgstr ""
 
 #. label
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/nav/default.xml:0
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_help.xml:2
 msgid "Help"
-msgstr "Ajuda"
+msgstr "Ayuda"
 
 #. label
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_analytics_overview.xml:2
 msgid "via_verde_analytics_overview"
-msgstr "via_verde_analytics_overview"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_configurations_overview.xml:8
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_configurations_overview.xml:5
 msgid "Inputs"
-msgstr "Fontes de dados"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_configurations_overview.xml:39
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_configurations_overview.xml:42
 msgid "Lookups"
-msgstr "Listas"
+msgstr ""
 
 #. label
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_configurations_overview.xml:5
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_configurations_overview.xml:2
 msgid "Configurations Overview"
-msgstr "Configurações"
+msgstr ""
 
 #. html
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_configurations_overview.xml:32
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_configurations_overview.xml:34
 msgid "<p>No inputs configured.</p>"
-msgstr "<p>Não existem fontes de dados configuradas.</p>"
+msgstr ""
+
+#. label
+#: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_help_about.xml:2
+msgid "About"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_overview.xml:81
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:81
 msgid "Charges by service"
-msgstr "Pagamentos por serviço"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_overview.xml:115
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:115
 msgid "Charges by service over time"
-msgstr "Pagamentos por serviço ao longo do tempo"
-
-#. label
-#: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_overview.xml:2
-#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:2
-msgid "Overview"
-msgstr "Geral"
+msgstr ""
 
 #. label
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_overview.xml:5
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_purchases_overview.xml:5
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:5
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_purchases_overview.xml:5
 msgid "Time Range"
-msgstr "Intervalo de tempo"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_overview.xml:32
@@ -128,113 +157,137 @@ msgstr "Intervalo de tempo"
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_search.xml:85
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:32
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:55
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_purchases_overview.xml:53
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_overview.xml:85
 msgid "Total charged"
-msgstr "Total pago"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_overview.xml:59
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:59
 msgid "Times used"
-msgstr "Utilizações"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_overview.xml:75
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:75
 msgid "Registered identifiers"
-msgstr "Identificadores registados"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_parking_overview.xml:90
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:90
 msgid "Last parking"
-msgstr "Últimos estacionamentos"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_parking_overview.xml:120
-#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:120
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:123
 msgid "Most Used Parks"
-msgstr "Parques usados mais frequentemente"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_parking_overview.xml:149
-#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:149
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:154
 msgid "Most Used Street Parking Locations"
-msgstr "Locais de etacionamento na rua mais frequentes"
-
-#. label
-#: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_parking_overview.xml:2
-#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:2
-msgid "Parking Overview"
-msgstr "Estacionamento"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_parking_overview.xml:31
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:31
 msgid "Distinct parkings visited"
-msgstr "Número de parques visitados"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_parking_overview.xml:80
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_parking_overview.xml:80
 msgid "Average parked time"
-msgstr "Tempo médio de estacionamento"
+msgstr ""
 
 #. label
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_purchases_overview.xml:2
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_purchases_overview.xml:2
 msgid "Purchases"
-msgstr "Compras"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_purchases_overview.xml:24
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_purchases_overview.xml:24
 msgid "Total number of purchases"
-msgstr "Número total de compras"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_purchases_overview.xml:38
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_purchases_overview.xml:38
 msgid "Distinct vendors"
-msgstr "Número de vendors"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_overview.xml:95
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_search.xml:95
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_overview.xml:95
 msgid "Last trips"
-msgstr "Últimos trajectos"
+msgstr ""
 
 #. title
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_overview.xml:118
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_search.xml:118
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_overview.xml:118
 msgid "Top trips"
-msgstr "Trajectos mais frequentes"
-
-#. label
-#: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_overview.xml:2
-#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_overview.xml:2
-msgid "Tolls Overview"
-msgstr "Portagens"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_overview.xml:33
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_search.xml:33
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_overview.xml:33
 msgid "Total number of charges"
-msgstr "Número total de pagamentos"
+msgstr ""
 
 #. option
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_overview.xml:59
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_search.xml:59
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_overview.xml:59
 msgid "Distinct charges"
-msgstr "Pagamentos"
+msgstr ""
 
 #. label
 #: /opt/splunk/etc/apps/via_verde_app/default/data/ui/views/via_verde_tolls_search.xml:2
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_search.xml:2
 msgid "Tolls Search"
-msgstr "Portagens - Pesquisa"
+msgstr ""
 
 #. label
 #: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/parking_locations.xml:2
 msgid "Parking Locations"
-msgstr "Estacionamentos"
+msgstr ""
+
+#. option
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:125
+msgid "Time"
+msgstr ""
+
+#. option
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_overview.xml:127
+msgid "Amount Charged"
+msgstr ""
+
+#. title
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_search.xml:39
+msgid "Trips"
+msgstr ""
+
+#. label
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_search.xml:8
+msgid "Entry Point"
+msgstr ""
+
+#. label
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_search.xml:19
+msgid "Exit Point"
+msgstr ""
+
+#. input/choice
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_search.xml:9
+#: /opt/splunk/etc/apps/via_verde_app/local/data/ui/views/via_verde_tolls_search.xml:25
+msgid "Any"
+msgstr ""
