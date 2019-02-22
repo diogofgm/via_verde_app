@@ -4,8 +4,8 @@
     <input type="time" token="time">
       <label>Time Range</label>
       <default>
-        <earliest>@y</earliest>
-        <latest>now</latest>
+        <earliest>0</earliest>
+        <latest></latest>
       </default>
     </input>
   </fieldset>

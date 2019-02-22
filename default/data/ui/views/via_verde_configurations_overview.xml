@@ -1,12 +1,9 @@
 <dashboard>
-  <init>
-    <set token="tk_show_inputs">true</set>
-  </init>
   <label>Configurations Overview</label>
   <row>
-    <panel>
+    <panel depends="$tk_show_inputs$">
       <title>Inputs</title>
-      <table depends="tk_show_inputs">
+      <table>
         <search>
           <query>| rest /services/data/inputs/all 
 | search sourcetype=via_verde*
@@ -16,8 +13,11 @@
           <latest>now</latest>
           <sampleRatio>1</sampleRatio>
           <done>
-            <condition>
+            <condition match="$job.resultCount$==0">
               <unset token="tk_show_inputs"></unset>
+            </condition>
+            <condition>
+              <set token="tk_show_inputs">true</set>
             </condition>
           </done>
         </search>
@@ -29,7 +29,9 @@
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
       </table>
-      <html rejects="tk_show_inputs">
+    </panel>
+    <panel rejects="$tk_show_inputs$">
+      <html>
         <p>No inputs configured.</p>
       </html>
     </panel>
@@ -39,13 +41,16 @@
       <title>Lookups</title>
       <table>
         <search>
-          <query>| inputlookup vai_verde_tools 
-| stats count</query>
+          <query>| rest /services/data/lookup-table-files
+| search eai:acl.app = "via_verde_app"
+| fields title eai:data updated
+| rename title AS File eai:data AS Path updated AS "Last update"</query>
           <earliest>-24h@h</earliest>
           <latest>now</latest>
         </search>
         <option name="count">10</option>
         <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
       </table>
     </panel>
   </row>

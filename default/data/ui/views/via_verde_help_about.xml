@@ -1,0 +1,11 @@
+<dashboard>
+  <label>About</label>
+  <row>
+    <panel>
+      <html>
+        <p>Developed By Diogo Silva</p>
+        <p>DevBusters</p>
+      </html>
+    </panel>
+  </row>
+</dashboard>

@@ -4,7 +4,7 @@
     <input type="time" token="time" searchWhenChanged="true">
       <label></label>
       <default>
-        <earliest>@y</earliest>
+        <earliest>-12mon@mon</earliest>
         <latest>now</latest>
       </default>
     </input>
@@ -21,7 +21,6 @@
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
         <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
@@ -47,7 +46,6 @@
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
         <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
@@ -73,7 +71,6 @@
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
         <option name="numberPrecision">0.00</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,30,70,100]</option>
@@ -102,7 +99,7 @@
 | fieldformat value="€".tostring(value, "commas")
 | table _time entry_point exit_point value duration  | sort - _time | dedup _time
 | rename _time AS Timestamp entry_point AS "Entry Point" exit_point AS "Exit Point" value AS Value duration AS Duration
-| convert ctime(Timestamp)</query>
+| convert timeformat="%Y/%m/%d %H:%M:%S" ctime(Timestamp)</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>

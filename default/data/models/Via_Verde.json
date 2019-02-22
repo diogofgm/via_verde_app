@@ -3,7 +3,7 @@
     "displayName": "Via Verde",
     "description": "",
     "objectSummary": {
-        "Event-Based": 1,
+        "Event-Based": 4,
         "Transaction-Based": 0,
         "Search-Based": 0
     },
@@ -203,9 +203,419 @@
                 }
             ],
             "lineage": "Via_Verde"
+        },
+        {
+            "objectName": "tolls",
+            "displayName": "Tolls",
+            "parentName": "Via_Verde",
+            "comment": "",
+            "fields": [
+                {
+                    "fieldName": "card",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "card",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "discount",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "discount",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "identifier",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "identifier",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "license_plate",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "license_plate",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "mb_ref",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "mb_ref",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "payment",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "payment",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "provider",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "provider",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "service",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "service",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "value",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "value",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "vendor",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "vendor",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "vendor_product",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "vendor_product",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "_time",
+                    "owner": "BaseEvent",
+                    "type": "timestamp",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "_time",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "host",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "host",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "source",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "source",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "sourcetype",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "sourcetype",
+                    "comment": ""
+                }
+            ],
+            "calculations": [],
+            "constraints": [
+                {
+                    "search": "",
+                    "owner": "Via_Verde.tolls"
+                }
+            ],
+            "lineage": "Via_Verde.tolls"
+        },
+        {
+            "objectName": "Parking",
+            "displayName": "Parking",
+            "parentName": "Via_Verde",
+            "comment": "",
+            "fields": [
+                {
+                    "fieldName": "card",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "card",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "discount",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "discount",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "identifier",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "identifier",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "license_plate",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "license_plate",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "mb_ref",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "mb_ref",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "payment",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "payment",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "provider",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "provider",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "service",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "service",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "value",
+                    "owner": "Via_Verde",
+                    "type": "number",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "value",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "vendor",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "vendor",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "vendor_product",
+                    "owner": "Via_Verde",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "vendor_product",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "_time",
+                    "owner": "BaseEvent",
+                    "type": "timestamp",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "_time",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "host",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "host",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "source",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "source",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "sourcetype",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "sourcetype",
+                    "comment": ""
+                }
+            ],
+            "calculations": [],
+            "constraints": [
+                {
+                    "search": "",
+                    "owner": "Via_Verde.Parking"
+                }
+            ],
+            "lineage": "Via_Verde.Parking"
+        },
+        {
+            "objectName": "Purchases",
+            "displayName": "Purchases",
+            "parentName": "Via_Verde",
+            "comment": "",
+            "fields": [],
+            "calculations": [],
+            "constraints": [
+                {
+                    "search": "",
+                    "owner": "Via_Verde.Purchases"
+                }
+            ],
+            "lineage": "Via_Verde.Purchases"
         }
     ],
     "objectNameList": [
-        "Via_Verde"
+        "Via_Verde",
+        "tolls",
+        "Parking",
+        "Purchases"
     ]
 }
