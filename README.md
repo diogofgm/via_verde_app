@@ -1,25 +1,25 @@
 Via Verde App for Splunk
 
-#Instalation
+# Instalation
 
-##Distributed envirioment
+## Distributed envirioment
 Install App in the Search heads
 
-#Configuring Splunk
-##Using GUI
+# Configuring Splunk
+## Using GUI
 Create a new index to hold Via Verde (e.g viaverde) data or choose an existing one
 Upload the file or configure a new monitor input
 Select via_verde as sourcetype
 Select your destination index
 
-#Configuring Via Verde App
-##Using GUI
+# Configuring Via Verde App
+## Using GUI
 Open the Via Verde App
 In Splunk Settings > Advanced Search > Search Macros
 Edit the via_verde_index and replace "viaverde" with index name you created to hold you data. 
 
-#Support
+# Support
 via_verde_app is community supported (http://answers.splunk.com)
 
-#Feedback
+# Feedback
 Please send your feedback to feedback+viaverdeapp [@] devbusters.com
