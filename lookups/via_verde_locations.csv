@@ -1,50 +1,81 @@
-location,type,latitude,longitude
-"Albergaria","Portagem",,
-"Albergaria 2","Portagem",,
-"Alverca PV","Portagem",,
-"Angeja E/O","Portagem",,
-"Argoncilhe","Portagem",,
-"Av. D.João I","Portagem",,
-"Aveiro Nascente","Portagem",,
-"Belverde NP","Portagem",,
-"Bombarral","Portagem",,
-"Borba",,,
-"Braga Sul",,,
-"Caçador",,,
-"Coina I",,,
-"Cortes N/P",,,
-"Elvas PV",,,
-"Esgueira",,,
-"Estremoz",,,
-"Evora Nascente",,,
-"Evora Poente",,,
-"Fagilde",,,
-"Figueiredo No",,,
-"Grijo PV",,,
-"Guimaraes Sul",,,
-"IC 2",,,
-"IC 24 Sul",,,
-"Leiria",,,
-"Leiria Sul",,,
-"Loures",,,
-"Mafra Este",,,
-"Mealhada-Cant.",,,
-"Mira",,,
-"Mira PV",,,
-"Oeiras",,,
-"Oeiras I","Portagem",,
-"P. 25 de Abril","Portagem","38.675958","-9.173911"
-"P.Vasco da Gama","Portagem","38.720134","-8.958620"
-"PQ Aeroporto P2","Parque de Estacionamento",,
-"PQ Colombo V","Parque de Estacionamento",,
-"PQ El Corte Inglês","Parque de Estacionamento",,
-"PQ Hosp da Luz","Parque de Estacionamento",,
-"PQ Martim Moniz","Parque de Estacionamento",,
-"PQ Sta Apolonia","Parque de Estacionamento",,
-"PQ Vasco da Gama","Parque de Estacionamento","38.767718","-9.097407"
-"PQ do Chiado","Parque de Estacionamento",,
-"Palhais NP",,,
-"Pinhal Novo PV",,,
-"Pousos N/P",,,
-"Tornada PV",,,
-"Vizela",,,
+location,type,latitude,longitude,"last_seen"
+Albergaria,Portagens,,,1532253540
+"Albergaria 2",Portagens,,,1532251020
+"Alverca PV",Portagens,,,1550870100
+"Angeja E/O",Portagens,"40.684914","-8.564933",1530974100
+Argoncilhe,Portagens,,,1550881980
+"Av. D.João I","Estacionamento de Rua",,,1547215560
+"Aveiro Nascente",Portagens,,,1531049580
+"Belas PV",Portagens,,,1542388740
+"Belverde NP",Portagens,,,1546798980
+Bombarral,Portagens,,,1532280540
+Borba,Portagens,,,1549108860
+"Braga Sul",Portagens,,,1550949060
+"Carcavelos PV",Portagens,,,1540577880
+Carregado,Portagens,,,1529759220
+"Caçador",Portagens,,,1532251020
+"Coina I",Portagens,,,1552046280
+"Coina PV",Portagens,,,1534373580
+"Cortes N/P",Portagens,,,1532277900
+"Elvas PV",Portagens,,,1549737120
+Esgueira,Portagens,"40.645828","-8.611154",1530974100
+Estremoz,Portagens,,,1531932480
+"Evora Nascente",Portagens,,,1531907460
+"Evora Poente",Portagens,,,1531903260
+Fagilde,Portagens,,,1532142720
+"Figueiredo No",Portagens,,,1550928720
+"Grandola Norte",Portagens,,,1534355640
+"Grandola Sul",Portagens,,,1534090260
+"Grijo PV",Portagens,,,1551031500
+"Guia O/E",Portagens,,,1514812260
+"Guimaraes Sul",Portagens,,,1551029100
+"IC 2",Portagens,,,1530964200
+"IC 24 Sul",Portagens,,,1550870100
+Leiria,Portagens,,,1532258220
+"Leiria Sul",Portagens,,,1532278140
+Loures,Portagens,,,1553358840
+"Mafra Este",Portagens,,,1553358840
+"Mafra Oeste",Portagens,,,1551031500
+"Maia PV",Portagens,,,1551029100
+Malveira,Portagens,,,1527364800
+"Marinha G. Sul",Portagens,,,1526855580
+"Mealhada-Cant.",Portagens,,,1532104560
+Mira,Portagens,,,1531049580
+"Mira PV",Portagens,,,1531050540
+Odivelas,Portagens,,,1542388740
+Oeiras,"Estacionamento de Rua",,,1547215560
+"Oeiras I",Portagens,"38.713595","-9.292756",1530385620
+"Oeiras II",Portagens,"38.711755","-9.301719",1536428940
+"P. 25 de Abril",Portagens,"38.675958","-9.173911",1552046940
+"P.Vasco da Gama",Portagens,"38.720134","-8.958620",1549741800
+"PQ Aeroporto P2","Parques de Estacionamento",,,1540584540
+"PQ Amoreiras","Parques de Estacionamento",,,1517581200
+"PQ Atr Saldanha","Parques de Estacionamento",,,1515167280
+"PQ C.Combro","Parques de Estacionamento",,,1521984660
+"PQ Cais Sodre","Parques de Estacionamento",,,1539983160
+"PQ Colombo V","Parques de Estacionamento",,,1551385800
+"PQ El Corte Inglês","Parques de Estacionamento",,,1547219340
+"PQ Gare do Oriente","Parques de Estacionamento",,,1540911120
+"PQ Hosp da Luz","Parques de Estacionamento",,,1546507320
+"PQ Lg. Camoes","Parques de Estacionamento",,,1552165740
+"PQ Martim Moniz","Parques de Estacionamento",,,1531513740
+"PQ Nações Hospital","Parques de Estacionamento",,,1523995140
+"PQ Praça Chile","Parques de Estacionamento",,,1526747460
+"PQ Pç da Figueira","Parques de Estacionamento",,,1515239880
+"PQ S.JOÃO CAPARICA","Parques de Estacionamento",,,1534679760
+"PQ Sta Apolonia","Parques de Estacionamento",,,1547936340
+"PQ Vasco da Gama","Parques de Estacionamento","38.767718","-9.097407",1545511680
+"PQ do Chiado","Parques de Estacionamento",,,1547903400
+"Paderne PV",Portagens,,,1514812800
+"Palhais NP",Portagens,,,1546798980
+"Pinhal Novo PV",Portagens,,,1549737120
+"Pousos N/P",Portagens,,,1532277900
+"Queluz I",Portagens,,,1526840160
+"Queluz II",Portagens,,,1542564420
+"Queluz PV",Portagens,,,1539526200
+"R. Maria Eusébia Gonçalve","Estacionamento de Rua",,,1534519680
+"S. Pedro",Portagens,,,1540543980
+"Setubal PV",Portagens,,,1534373580
+"Tornada PV",Portagens,,,1532278140
+"Torres Vedras N",Portagens,,,1529683260
+Vizela,Portagens,,,1550881980

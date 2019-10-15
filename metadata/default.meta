@@ -19,7 +19,7 @@ export = system
 ### TRANSFORMS
 
 [transforms]
-export = system
+export = none
 
 
 ### LOOKUPS
@@ -27,6 +27,11 @@ export = system
 [lookups]
 export = system
 
+
+### SEARCHES
+[savedsearches]
+access = read : [ * ], write : [ admin, power ]
+export = system
 
 ### VIEWSTATES: even normal users should be able to create shared viewstates
 
