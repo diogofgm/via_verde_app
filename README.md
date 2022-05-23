@@ -1,4 +1,5 @@
 # Via Verde App for Splunk
+[![AppInspect](https://github.com/diogofgm/via_verde_app/actions/workflows/appinspect.yml/badge.svg)](https://github.com/diogofgm/via_verde_app/actions/workflows/appinspect.yml)
 
 ## Instalation
 
