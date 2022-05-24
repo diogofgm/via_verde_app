@@ -1,4 +1,4 @@
-<dashboard>
+<dashboard version="1.1">
   <label>Configurations Overview</label>
   <row>
     <panel depends="$tk_show_inputs$">

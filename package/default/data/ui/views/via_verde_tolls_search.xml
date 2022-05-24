@@ -1,4 +1,4 @@
-<form>
+<form version="1.1">
   <label>Tolls Search</label>
   <search id="bs_tolls">
     <query>`via_verde_index` service = "Portagens" | stats count by entry_point exit_point</query>
